@@ -30,7 +30,7 @@ def is_sentence(text):
 def getSentence():
     while True:
         sentence = input("Enter a sentence: ")
-        if isSentence(sentence):
+        if is_sentence(sentence):
             return sentence
         else:
             print("Error: Sentence must start with a capital letter and end with punctuation (., !, ?).")
@@ -56,6 +56,7 @@ def printFrequencies(words, freqs):
     print("\nWord frequencies:")
     for i in range(len(words)):
         print(words[i], "-", freqs[i])
+
 
 def main():
     sentence = getSentence()
