@@ -36,11 +36,13 @@ def getSentence():
             print("Error: Sentence must start with a capital letter and end with punctuation (., !, ?).")
 
 
-#calculate word frequencies
+# Calculate word frequencies
 def calculateFrequencies(sentence):
-    words = sentence[:-1].split()
+    sentence = sentence[:-1]
+    words = re.findall(r"\b\w+\b", sentence.lower())
     wordList = []
     freqList = []
+
     for word in words:
         if word in wordList:
             index = wordList.index(word)
@@ -48,10 +50,11 @@ def calculateFrequencies(sentence):
         else:
             wordList.append(word)
             freqList.append(1)
+
     return wordList, freqList
 
 
-#print the results
+# Print the results
 def printFrequencies(words, freqs):
     print("\nWord frequencies:")
     for i in range(len(words)):
