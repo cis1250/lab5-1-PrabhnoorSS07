@@ -24,3 +24,44 @@ def is_sentence(text):
         return False
 
     return True
+
+
+# Function to get and validate user sentence input
+def getSentence():
+    while True:
+        sentence = input("Enter a sentence: ")
+        if isSentence(sentence):
+            return sentence
+        else:
+            print("Error: Sentence must start with a capital letter and end with punctuation (., !, ?).")
+
+
+#calculate word frequencies
+def calculateFrequencies(sentence):
+    words = sentence[:-1].split()
+    wordList = []
+    freqList = []
+    for word in words:
+        if word in wordList:
+            index = wordList.index(word)
+            freqList[index] += 1
+        else:
+            wordList.append(word)
+            freqList.append(1)
+    return wordList, freqList
+
+
+#print the results
+def printFrequencies(words, freqs):
+    print("\nWord frequencies:")
+    for i in range(len(words)):
+        print(words[i], "-", freqs[i])
+
+def main():
+    sentence = getSentence()
+    words, freqs = calculateFrequencies(sentence)
+    printFrequencies(words, freqs)
+
+
+if __name__ == "__main__":
+    main()
